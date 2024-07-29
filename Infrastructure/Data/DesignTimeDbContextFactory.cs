@@ -5,8 +5,6 @@ namespace Infrastructure.Data;
 
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
 {
-    private const string AspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
-
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         char separator = Path.DirectorySeparatorChar;
@@ -19,13 +17,9 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
 
     private ApplicationDbContext Create(string basePath)
     {
-        string evironmentName = Environment.GetEnvironmentVariable(AspNetCoreEnvironment)!;
-        Console.WriteLine($"Environment: {evironmentName}");
-
         IConfigurationRoot configuration = new ConfigurationBuilder()
             .SetBasePath(basePath)
             .AddJsonFile("appsettings.local.json", optional: true)
-            .AddJsonFile($"appsettings.{evironmentName}.json", optional: true)
             .AddEnvironmentVariables()
             .Build();
 
