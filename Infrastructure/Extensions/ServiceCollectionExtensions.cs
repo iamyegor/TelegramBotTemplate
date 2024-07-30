@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
         {
             botConfig.HostAddress = Environment.GetEnvironmentVariable("SITE_URL")!;
         }
-        
+
         services.AddSingleton(botConfig);
 
         return botConfig;

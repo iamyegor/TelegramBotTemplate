@@ -7,7 +7,6 @@ namespace Infrastructure.Data;
 public class ApplicationDbContext : DbContext
 {
     private readonly string _connectionString;
-    public DbSet<User> Users => Set<User>();
 
     public ApplicationDbContext(string connectionString)
     {
@@ -15,6 +14,8 @@ public class ApplicationDbContext : DbContext
     }
 
     public ApplicationDbContext() { }
+
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

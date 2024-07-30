@@ -9,14 +9,18 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        var host = CreateHostBuilder(args).UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration)).Build();
+        IHost host = CreateHostBuilder(args)
+            .UseSerilog((context, config) => config.ReadFrom.Configuration(context.Configuration))
+            .Build();
         await host.RunAsync();
     }
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        return Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
             });
+    }
 }

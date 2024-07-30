@@ -3,12 +3,12 @@ namespace Domain.Common;
 public abstract class Entity<TId>
     where TId : notnull
 {
-    public TId Id { get; }
-
     public Entity(TId id)
     {
         Id = id;
     }
+
+    public TId Id { get; }
 
     public override bool Equals(object? obj)
     {

@@ -32,7 +32,7 @@ public class MigrationsController : ControllerBase
             {
                 dirInfo = dirInfo.Parent!;
             }
-            
+
             migrationsFolderPath = Path.Combine(
                 dirInfo.FullName,
                 "Infrastructure",
@@ -44,9 +44,9 @@ public class MigrationsController : ControllerBase
         {
             migrationsFolderPath = Path.Combine(dirInfo.FullName, "Migrations");
         }
-        
+
         _logger.LogCritical($"Migrations folder path: {migrationsFolderPath}");
-        
+
         DirectoryInfo migrationsFolderInfo = new DirectoryInfo(migrationsFolderPath);
         FileInfo[] migrationFiles = migrationsFolderInfo.GetFiles();
 

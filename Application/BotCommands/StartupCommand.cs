@@ -21,7 +21,7 @@ public class StartupCommand : IBotCommand
     public async Task Execute(UserRequest request, CancellationToken ct)
     {
         await _bot.SendTextMessageAsync(
-            chatId: request.UserTelegramId,
+            request.UserTelegramId,
             "Hello! I'm a bot that can help you with your tasks. "
                 + "To start, type /help to see the list of available commands.",
             cancellationToken: ct

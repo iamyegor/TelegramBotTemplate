@@ -1,6 +1,5 @@
 using DialogProcessing.BotCommands.Common;
 using Infrastructure.Request;
-using Microsoft.Extensions.Logging;
 
 namespace DialogProcessing;
 
@@ -12,10 +11,10 @@ public class DialogProcessor
     {
         _commands = processorsList.ToList();
     }
-    
+
     public async Task ProcessCommand(UserRequest request, CancellationToken token)
     {
-        foreach (var command in _commands)
+        foreach (IBotCommand command in _commands)
         {
             if (await command.IsApplicable(request, token))
             {

@@ -4,12 +4,6 @@ namespace Infrastructure.Request;
 
 public class UserRequest
 {
-    public int MessageId { get; }
-    public long UserTelegramId { get; }
-    public string Text { get; }
-    public CallbackQuery? CallbackQuery { get; }
-    public Update Request { get; }
-
     public UserRequest(Update request)
     {
         UserTelegramId =
@@ -25,4 +19,10 @@ public class UserRequest
         CallbackQuery = request.CallbackQuery;
         Request = request;
     }
+
+    public int MessageId { get; }
+    public long UserTelegramId { get; }
+    public string Text { get; }
+    public CallbackQuery? CallbackQuery { get; }
+    public Update Request { get; }
 }

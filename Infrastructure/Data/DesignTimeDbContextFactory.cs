@@ -19,7 +19,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Applicatio
     {
         IConfigurationRoot configuration = new ConfigurationBuilder()
             .SetBasePath(basePath)
-            .AddJsonFile("appsettings.local.json", optional: true)
+            .AddJsonFile("appsettings.local.json", true)
             .AddEnvironmentVariables()
             .Build();
 

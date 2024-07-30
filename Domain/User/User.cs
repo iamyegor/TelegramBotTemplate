@@ -4,11 +4,6 @@ namespace Domain.User;
 
 public class User : AggregateRoot<Guid>
 {
-    public long TelegramId { get; }
-    public int? TopicId { get; private set; }
-    public bool IsBanned { get; private set; }
-    public string? TelegramUsername { get; private set; }
-
     public User(long telegramId, int? topicId, string? telegramUsername)
         : base(Guid.NewGuid())
     {
@@ -19,6 +14,11 @@ public class User : AggregateRoot<Guid>
 
     private User()
         : base(Guid.NewGuid()) { }
+
+    public long TelegramId { get; }
+    public int? TopicId { get; private set; }
+    public bool IsBanned { get; private set; }
+    public string? TelegramUsername { get; private set; }
 
     public void UpdateData(int newTopicId, string? newTelegramUsername)
     {

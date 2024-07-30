@@ -16,15 +16,16 @@ namespace Api.Controllers;
 public class TelegramController : Controller
 {
     private readonly BotConfiguration _configuration;
-    private readonly TelegramBotClient _telegramBotClient;
-    private readonly ILogger<TelegramController> _logger;
     private readonly DialogProcessor _dialogProcessor;
+    private readonly ILogger<TelegramController> _logger;
+    private readonly TelegramBotClient _telegramBotClient;
 
     public TelegramController(
         BotConfiguration configuration,
         TelegramBotClient telegramBotClient,
         DialogProcessor dialogProcessor,
-        ILogger<TelegramController> logger)
+        ILogger<TelegramController> logger
+    )
     {
         _configuration = configuration;
         _telegramBotClient = telegramBotClient;

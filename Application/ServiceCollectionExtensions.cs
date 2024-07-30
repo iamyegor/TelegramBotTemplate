@@ -1,5 +1,4 @@
 using System.Reflection;
-using DialogProcessing.BotCommands;
 using DialogProcessing.BotCommands.Common;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,8 +8,8 @@ public static class ServiceCollectionExtensions
 {
     public static void AddBotCommands(this IServiceCollection services)
     {
-        var commandInterface = typeof(IBotCommand);
-        var commandTypes = Assembly
+        Type commandInterface = typeof(IBotCommand);
+        IEnumerable<Type> commandTypes = Assembly
             .GetExecutingAssembly()
             .GetTypes()
             .Where(t =>
@@ -18,7 +17,7 @@ public static class ServiceCollectionExtensions
                 && t is { IsInterface: false, IsAbstract: false }
             );
 
-        foreach (var commandType in commandTypes)
+        foreach (Type commandType in commandTypes)
         {
             services.AddTransient(commandInterface, commandType);
         }

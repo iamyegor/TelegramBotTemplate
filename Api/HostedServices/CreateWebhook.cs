@@ -38,8 +38,8 @@ public class CreateWebhook : IHostedService
             }
 
             await _telegramBotClient.SetWebhookAsync(
-                url: $"{_config.HostAddress}/telegram/{_config.WebhookToken}",
-                certificate: inputFileStream,
+                $"{_config.HostAddress}/telegram/{_config.WebhookToken}",
+                inputFileStream,
                 dropPendingUpdates: true,
                 cancellationToken: cancellationToken
             );
