@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
 using Api.Common;
 using Api.HostedServices;
-using Application;
 using DialogProcessing;
 using Infrastructure.Data;
 using Infrastructure.Extensions;
@@ -36,7 +35,6 @@ public class Startup
         BotConfiguration botConfig = services.AddBotConfiguration(Configuration);
 
         services.AddScoped(_ => new TelegramBotClient(botConfig.Token));
-        services.AddApplication();
         services.AddDialogProcessing();
         services.AddInfrastructure(Configuration);
 

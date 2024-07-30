@@ -1,16 +1,13 @@
-using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application;
+namespace DialogProcessing;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddDialogProcessing(this IServiceCollection services)
     {
-        services.AddMediatR(config =>
-        {
-            config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-        });
+        services.AddSingleton<DialogProcessor>();
+        services.AddBotCommands();
 
         return services;
     }
